@@ -18,6 +18,7 @@ export interface Medication {
   refillDate?: string;
   pillsRemaining?: number;
   notes?: string;
+  reminderEnabled?: boolean;
 }
 
 export interface Appointment {
@@ -36,6 +37,30 @@ export interface MedicationReminder {
   time: string;
   taken: boolean;
   date: string;
+}
+
+export interface EmergencyContact {
+  id: string;
+  name: string;
+  relationship: string;
+  phone: string;
+  email?: string;
+  isPrimary: boolean;
+  notifyOnSevereSeizure: boolean;
+}
+
+export interface SymptomJournalEntry {
+  id: string;
+  date: string;
+  mood: 1 | 2 | 3 | 4 | 5;
+  sleepQuality: 1 | 2 | 3 | 4 | 5;
+  sleepHours: number;
+  stressLevel: 1 | 2 | 3 | 4 | 5;
+  energyLevel: 1 | 2 | 3 | 4 | 5;
+  exercised: boolean;
+  alcoholConsumed: boolean;
+  missedMedication: boolean;
+  notes?: string;
 }
 
 export type SeizureType = SeizureLog['type'];
@@ -60,4 +85,15 @@ export const COMMON_TRIGGERS = [
   'Skipped meals',
   'Exercise',
   'Unknown',
+];
+
+export const RELATIONSHIP_TYPES = [
+  'Spouse/Partner',
+  'Parent',
+  'Sibling',
+  'Child',
+  'Friend',
+  'Caregiver',
+  'Doctor',
+  'Other',
 ];

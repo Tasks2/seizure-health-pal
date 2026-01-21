@@ -5,7 +5,10 @@ import { SeizureLogView } from '@/components/seizures/SeizureLogView';
 import { MedicationView } from '@/components/medications/MedicationView';
 import { AppointmentView } from '@/components/appointments/AppointmentView';
 import { ReportView } from '@/components/reports/ReportView';
+import { EmergencyContactView } from '@/components/emergency/EmergencyContactView';
+import { SymptomJournalView } from '@/components/journal/SymptomJournalView';
 import { useHealthData } from '@/hooks/useHealthData';
+import { useMedicationReminders } from '@/hooks/useMedicationReminders';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Index = () => {
@@ -15,6 +18,8 @@ const Index = () => {
     medications,
     appointments,
     reminders,
+    emergencyContacts,
+    symptomJournal,
     isLoaded,
     addSeizure,
     updateSeizure,
@@ -26,7 +31,16 @@ const Index = () => {
     updateAppointment,
     deleteAppointment,
     markMedicationTaken,
+    addEmergencyContact,
+    updateEmergencyContact,
+    deleteEmergencyContact,
+    addSymptomEntry,
+    updateSymptomEntry,
+    deleteSymptomEntry,
   } = useHealthData();
+
+  // Initialize medication reminders
+  useMedicationReminders(medications);
 
   if (!isLoaded) {
     return (
@@ -72,6 +86,15 @@ const Index = () => {
             onMarkTaken={markMedicationTaken}
           />
         );
+      case 'journal':
+        return (
+          <SymptomJournalView
+            entries={symptomJournal}
+            onAdd={addSymptomEntry}
+            onUpdate={updateSymptomEntry}
+            onDelete={deleteSymptomEntry}
+          />
+        );
       case 'appointments':
         return (
           <AppointmentView
@@ -79,6 +102,15 @@ const Index = () => {
             onAdd={addAppointment}
             onUpdate={updateAppointment}
             onDelete={deleteAppointment}
+          />
+        );
+      case 'emergency':
+        return (
+          <EmergencyContactView
+            contacts={emergencyContacts}
+            onAdd={addEmergencyContact}
+            onUpdate={updateEmergencyContact}
+            onDelete={deleteEmergencyContact}
           />
         );
       case 'reports':

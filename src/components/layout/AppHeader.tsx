@@ -28,8 +28,8 @@ export function AppHeader({ activeTab, onTabChange }: AppHeaderProps) {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1">
-          {['dashboard', 'seizures', 'medications', 'appointments', 'reports'].map((tab) => (
+        <nav className="hidden lg:flex items-center gap-1">
+          {['dashboard', 'seizures', 'medications', 'journal', 'appointments', 'emergency', 'reports'].map((tab) => (
             <Button
               key={tab}
               variant={activeTab === tab ? 'default' : 'ghost'}
@@ -48,9 +48,9 @@ export function AppHeader({ activeTab, onTabChange }: AppHeaderProps) {
             <span className="absolute top-1 right-1 w-2 h-2 bg-accent rounded-full" />
           </Button>
 
-          {/* Mobile Navigation */}
+          {/* Mobile/Tablet Navigation */}
           <Sheet>
-            <SheetTrigger asChild className="md:hidden">
+            <SheetTrigger asChild className="lg:hidden">
               <Button variant="ghost" size="icon">
                 <Menu className="w-5 h-5" />
               </Button>
