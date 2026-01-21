@@ -1,4 +1,4 @@
-import { LayoutDashboard, Zap, Pill, Calendar, FileText } from 'lucide-react';
+import { LayoutDashboard, Zap, Pill, Calendar, FileText, Phone, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -11,7 +11,9 @@ const navItems = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { id: 'seizures', label: 'Seizure Log', icon: Zap },
   { id: 'medications', label: 'Medications', icon: Pill },
+  { id: 'journal', label: 'Journal', icon: BookOpen },
   { id: 'appointments', label: 'Appointments', icon: Calendar },
+  { id: 'emergency', label: 'Emergency', icon: Phone },
   { id: 'reports', label: 'Reports', icon: FileText },
 ];
 
