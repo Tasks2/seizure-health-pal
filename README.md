@@ -83,7 +83,7 @@ Future improvements may include:
 
 ## 📄 License
 
-This project is for educational and portfolio purposes. Licensing will be defined if the project moves toward production use.
+This project is for educational and experimental purposes. Licensing will be defined if the project moves toward production use.
 
 ---
 
