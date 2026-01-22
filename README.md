@@ -1,73 +1,89 @@
-# Welcome to your Lovable project
+# Seizure & Medication Tracker
 
-## Project info
+A personal health tracking application designed to help individuals monitor seizures, manage medications, and prepare clear, shareable reports for healthcare providers.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+> ⚠️ **Disclaimer**: This app is intended for tracking and organization only and does **not** provide medical advice, diagnosis, or treatment.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## ✨ Purpose
 
-**Use Lovable**
+Managing epilepsy or seizure-related conditions often involves tracking multiple variables over long periods of time. This project was created to:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+* Reduce the burden of manual tracking
+* Help users recognize patterns and trends
+* Improve communication with neurologists and caregivers
+* Provide structured, exportable data for medical appointments
 
-Changes made via Lovable will be committed automatically to this repo.
+This is an **experimental,  project** built to demonstrate  application design, data modeling, and user‑centered features.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🧠 Core Features
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Seizure Tracking
 
-Follow these steps:
+* Log seizure events with:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+  * Date & time
+  * Seizure type
+  * Duration
+  * Optional notes or triggers
+* View seizure history in a clear timeline
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Medication Management
 
-# Step 3: Install the necessary dependencies.
-npm i
+* Track prescribed medications and dosages
+* Set medication reminders
+* Receive refill alerts before medication runs out
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+### Appointment Scheduling
 
-**Edit a file directly in GitHub**
+* Schedule neurologist or follow‑up appointments
+* Optional reminders before visits
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Data Visualization
 
-**Use GitHub Codespaces**
+* Charts showing seizure frequency over time
+* Trend analysis by seizure type or duration
+* Helps identify possible patterns or changes
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Reports & Export
 
-## What technologies are used for this project?
+* Generate reports for doctors
+* Export data as **PDF** or share via **email**
+* Designed for quick review during appointments
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## 🔒 Privacy & Data Considerations
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+* All health data is user-owned
+* No public sharing by default
+* Designed with privacy-first principles
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## 🚧 Project Status
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+* Experimental
+* Actively evolving
+* Built as a **experimental project**, not a production medical system
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Future improvements may include:
+
+* Cloud sync
+* Multi-device access
+* Data backup and restore
+* Accessibility enhancements
+
+---
+
+## 📄 License
+
+This project is for educational and portfolio purposes. Licensing will be defined if the project moves toward production use.
+
+---
+
