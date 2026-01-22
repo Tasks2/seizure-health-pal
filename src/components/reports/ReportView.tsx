@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { format, subDays, subMonths, eachDayOfInterval, eachWeekOfInterval, startOfWeek, endOfWeek } from 'date-fns';
-import { FileText, Download, Mail, TrendingUp, TrendingDown, BarChart3, PieChart, Activity } from 'lucide-react';
+import { format, subDays, subMonths, eachDayOfInterval, eachWeekOfInterval, endOfWeek } from 'date-fns';
+import { FileText, Download, Mail, TrendingUp, BarChart3, PieChart, Activity } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart as RechartsPieChart, Pie, Cell, Legend } from 'recharts';
+import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart as RechartsPieChart, Pie, Cell } from 'recharts';
 import { SeizureLog, Medication, Appointment, SEIZURE_TYPES } from '@/types/health';
 import { jsPDF } from 'jspdf';
-import { cn } from '@/lib/utils';
+
 
 interface ReportViewProps {
   seizures: SeizureLog[];
@@ -18,7 +18,7 @@ interface ReportViewProps {
 
 type DateRange = '7d' | '30d' | '90d' | '6m' | '1y';
 
-export function ReportView({ seizures, medications, appointments }: ReportViewProps) {
+export function ReportView({ seizures, medications }: ReportViewProps) {
   const [dateRange, setDateRange] = useState<DateRange>('30d');
 
   const getDateRangeStart = () => {
@@ -162,7 +162,7 @@ export function ReportView({ seizures, medications, appointments }: ReportViewPr
 
     doc.setFontSize(9);
     doc.setTextColor(60);
-    filteredSeizures.slice(0, 10).forEach((seizure, index) => {
+    filteredSeizures.slice(0, 10).forEach((seizure) => {
       const typeLabel = SEIZURE_TYPES.find(t => t.value === seizure.type)?.label || seizure.type;
       doc.text(
         `${format(new Date(seizure.date), 'MMM d, yyyy')} at ${seizure.time} - ${typeLabel} (${seizure.duration}s, severity ${seizure.severity}/5)`,

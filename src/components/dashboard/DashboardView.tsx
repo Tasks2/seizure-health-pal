@@ -3,7 +3,7 @@ import { format, subDays, startOfMonth, endOfMonth, eachDayOfInterval } from 'da
 import { Zap, Pill, Calendar, TrendingUp, TrendingDown, Clock, AlertCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Progress } from '@/components/ui/progress';
+
 import { SeizureLog, Medication, Appointment } from '@/types/health';
 import { cn } from '@/lib/utils';
 

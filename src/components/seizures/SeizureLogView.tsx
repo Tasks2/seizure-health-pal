@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { format } from 'date-fns';
 import { Plus, Zap, Trash2, Edit, Search } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { SeizureLog, SEIZURE_TYPES, COMMON_TRIGGERS } from '@/types/health';
+import { SeizureLog, SEIZURE_TYPES } from '@/types/health';
 import { SeizureForm } from './SeizureForm';
 import { cn } from '@/lib/utils';
 
