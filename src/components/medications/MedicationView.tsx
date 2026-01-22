@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Plus, Pill, Clock, AlertCircle, Trash2, Edit, Check } from 'lucide-react';
+import { Plus, Pill, Clock, AlertCircle, Trash2, Edit, Check, Bell, BellOff, BellRing } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
@@ -8,6 +8,7 @@ import { Medication, MedicationReminder } from '@/types/health';
 import { MedicationForm } from './MedicationForm';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
+import { useMedicationReminders } from '@/hooks/useMedicationReminders';
 
 interface MedicationViewProps {
   medications: Medication[];
@@ -28,6 +29,7 @@ export function MedicationView({
 }: MedicationViewProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingMedication, setEditingMedication] = useState<Medication | null>(null);
+  const { permissionStatus, requestPermission, isSupported } = useMedicationReminders(medications);
 
   const today = format(new Date(), 'yyyy-MM-dd');
 
@@ -109,6 +111,69 @@ export function MedicationView({
           </DialogContent>
         </Dialog>
       </motion.div>
+
+      {/* Notification Settings */}
+      {isSupported && (
+        <motion.div variants={itemVariants}>
+          <Card className={cn(
+            "card-elevated",
+            permissionStatus === 'granted' && "border-success/50 bg-success/5",
+            permissionStatus === 'denied' && "border-destructive/50 bg-destructive/5",
+            permissionStatus === 'default' && "border-primary/50 bg-primary/5"
+          )}>
+            <CardContent className="p-4">
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  {permissionStatus === 'granted' ? (
+                    <div className="w-10 h-10 rounded-lg bg-success/20 flex items-center justify-center">
+                      <BellRing className="w-5 h-5 text-success" />
+                    </div>
+                  ) : permissionStatus === 'denied' ? (
+                    <div className="w-10 h-10 rounded-lg bg-destructive/20 flex items-center justify-center">
+                      <BellOff className="w-5 h-5 text-destructive" />
+                    </div>
+                  ) : (
+                    <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                      <Bell className="w-5 h-5 text-primary" />
+                    </div>
+                  )}
+                  <div>
+                    <p className="font-medium text-foreground">
+                      {permissionStatus === 'granted' 
+                        ? 'Reminders Enabled' 
+                        : permissionStatus === 'denied' 
+                          ? 'Reminders Blocked' 
+                          : 'Enable Reminders'}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {permissionStatus === 'granted' 
+                        ? "You'll receive notifications for medication times" 
+                        : permissionStatus === 'denied' 
+                          ? 'Please enable notifications in your browser settings' 
+                          : 'Get notified when it\'s time to take your medications'}
+                    </p>
+                  </div>
+                </div>
+                {permissionStatus === 'default' && (
+                  <Button 
+                    onClick={requestPermission}
+                    className="btn-gradient gap-2 shrink-0"
+                  >
+                    <Bell className="w-4 h-4" />
+                    Enable
+                  </Button>
+                )}
+                {permissionStatus === 'granted' && (
+                  <div className="flex items-center gap-2 text-success text-sm font-medium">
+                    <Check className="w-4 h-4" />
+                    Active
+                  </div>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      )}
 
       {/* Low Stock Alerts */}
       {lowStockMedications.length > 0 && (

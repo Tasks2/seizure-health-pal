@@ -8,7 +8,6 @@ import { ReportView } from '@/components/reports/ReportView';
 import { EmergencyContactView } from '@/components/emergency/EmergencyContactView';
 import { SymptomJournalView } from '@/components/journal/SymptomJournalView';
 import { useHealthData } from '@/hooks/useHealthData';
-import { useMedicationReminders } from '@/hooks/useMedicationReminders';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Index = () => {
@@ -39,8 +38,7 @@ const Index = () => {
     deleteSymptomEntry,
   } = useHealthData();
 
-  // Initialize medication reminders
-  useMedicationReminders(medications);
+  // Medication reminders are now initialized within MedicationView
 
   if (!isLoaded) {
     return (
