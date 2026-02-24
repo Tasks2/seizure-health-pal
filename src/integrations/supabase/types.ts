@@ -14,7 +14,260 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      appointments: {
+        Row: {
+          created_at: string
+          date: string
+          doctor: string
+          id: string
+          location: string | null
+          notes: string | null
+          time: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          date: string
+          doctor: string
+          id?: string
+          location?: string | null
+          notes?: string | null
+          time: string
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          doctor?: string
+          id?: string
+          location?: string | null
+          notes?: string | null
+          time?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      emergency_contacts: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          is_primary: boolean
+          name: string
+          notify_on_severe_seizure: boolean
+          phone: string
+          relationship: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          is_primary?: boolean
+          name: string
+          notify_on_severe_seizure?: boolean
+          phone: string
+          relationship: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          is_primary?: boolean
+          name?: string
+          notify_on_severe_seizure?: boolean
+          phone?: string
+          relationship?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      medication_reminders: {
+        Row: {
+          created_at: string
+          date: string
+          id: string
+          medication_id: string
+          taken: boolean
+          time: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          date: string
+          id?: string
+          medication_id: string
+          taken?: boolean
+          time: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          id?: string
+          medication_id?: string
+          taken?: boolean
+          time?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "medication_reminders_medication_id_fkey"
+            columns: ["medication_id"]
+            isOneToOne: false
+            referencedRelation: "medications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      medications: {
+        Row: {
+          created_at: string
+          dosage: string
+          frequency: string
+          id: string
+          name: string
+          notes: string | null
+          pills_remaining: number | null
+          refill_date: string | null
+          reminder_enabled: boolean | null
+          times: string[]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          dosage: string
+          frequency: string
+          id?: string
+          name: string
+          notes?: string | null
+          pills_remaining?: number | null
+          refill_date?: string | null
+          reminder_enabled?: boolean | null
+          times?: string[]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          dosage?: string
+          frequency?: string
+          id?: string
+          name?: string
+          notes?: string | null
+          pills_remaining?: number | null
+          refill_date?: string | null
+          reminder_enabled?: boolean | null
+          times?: string[]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      seizure_logs: {
+        Row: {
+          created_at: string
+          date: string
+          duration: number
+          id: string
+          notes: string | null
+          severity: number
+          time: string
+          triggers: string[] | null
+          type: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          date: string
+          duration?: number
+          id?: string
+          notes?: string | null
+          severity: number
+          time: string
+          triggers?: string[] | null
+          type: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          duration?: number
+          id?: string
+          notes?: string | null
+          severity?: number
+          time?: string
+          triggers?: string[] | null
+          type?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      symptom_journal_entries: {
+        Row: {
+          alcohol_consumed: boolean
+          created_at: string
+          date: string
+          energy_level: number
+          exercised: boolean
+          id: string
+          missed_medication: boolean
+          mood: number
+          notes: string | null
+          sleep_hours: number
+          sleep_quality: number
+          stress_level: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          alcohol_consumed?: boolean
+          created_at?: string
+          date: string
+          energy_level: number
+          exercised?: boolean
+          id?: string
+          missed_medication?: boolean
+          mood: number
+          notes?: string | null
+          sleep_hours: number
+          sleep_quality: number
+          stress_level: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          alcohol_consumed?: boolean
+          created_at?: string
+          date?: string
+          energy_level?: number
+          exercised?: boolean
+          id?: string
+          missed_medication?: boolean
+          mood?: number
+          notes?: string | null
+          sleep_hours?: number
+          sleep_quality?: number
+          stress_level?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
